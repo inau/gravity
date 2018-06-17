@@ -8,25 +8,15 @@ public class CameraBehaviour : MonoBehaviour {
     public bool overview = false;
 
 	void Update() {
-		//UpdateWithRot ();
+		if (overview != GlobalVariables.Overview_Camera) {
+			setOverview (GlobalVariables.Overview_Camera);
+		}
 	}
-
-	// Update is called once per frame
-	void UpdateNoRot () {
-        Vector3 pos = follow_target.transform.position;
-		pos.y += y_offset;
-        pos.z = overview ? overview_distance : normal_dist;
-        transform.position = pos;
-    }
-
-	void UpdateWithRot () {
-//		transform = follow_target.transform;
-	}
-
+			
 	public void setOverview(bool b) {
 		overview = b;
 		var v = this.transform.position;
-			v.z = overview ? overview_distance : normal_dist;
+		v.z = overview ? overview_distance : normal_dist;
 		this.transform.position = v;
 	}
 }

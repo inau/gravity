@@ -3,10 +3,10 @@ using System.Collections;
 
 public class GlobalVariables {
 
-	protected static bool spawn_black_holes = true;
-	protected static float gravity_momentum = 1f;
-	protected static float gravity_min = 1f, gravity_cap = 100f;
-	protected static int map_w = 5, map_h = 5;
+	protected static bool spawn_black_holes = true, overview_camera = false, helper_line = false;
+	protected static float gravity_momentum = .1f;
+	protected static float gravity_min = .1f, gravity_cap = 10f;
+	protected static int map_w = 10, map_h = 5;
 
 	public static bool Spawn_Black_Holes {
 		get { 
@@ -14,6 +14,25 @@ public class GlobalVariables {
 		}
 		set { 
 			spawn_black_holes = value;
+		}
+	}
+
+	public static bool Show_Helper_Line {
+		get { 
+			return helper_line;
+		}
+		set { 
+			helper_line = value;
+		}
+	}
+
+
+	public static bool Overview_Camera {
+		get { 
+			return overview_camera;
+		}
+		set { 
+			overview_camera = value;
 		}
 	}
 

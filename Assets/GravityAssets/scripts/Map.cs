@@ -31,21 +31,59 @@ public class GravityMap {
     public void RandomSeed()
     {
 
-        for (int i = 0; i < h-1; i++)
+        for (int i = 0; i < h; i++)
         {
-            nodes[i, 0] = GravityTransition.BLOCKED;
-            nodes[i, w-1] = GravityTransition.BLOCKED;
-            for (int j = 1; j < w-1; j++)
+           // nodes[i, 0] = GravityTransition.BLOCKED;
+           // nodes[i, w-1] = GravityTransition.BLOCKED;
+            for (int j = 0; j < w; j++)
             {
-                nodes[i,j] = rand_trans();
+				nodes [i, j] = rand_trans();
             }
         }
-        nodes[h-1, 0] = GravityTransition.BLOCKED;
-        nodes[h-1, w - 1] = GravityTransition.BLOCKED;
-        for (int j = 1; j < w - 1; j++)
-        {
-            nodes[h-1, j] = GravityTransition.GOAL;
-        }
+		GeneratePath();
     }
+
+	private int RowIndex() {
+		return Random.Range (0, w);
+	}
+
+	public void GeneratePath() {
+		int start = RowIndex ();
+		int goal = RowIndex ();
+		int yt = start > goal ?  Random.Range(goal, start) : Random.Range(start, goal);
+		//Debug.Log (": " + start + ", " + goal + " - " + yt);
+
+		int x = start, y = 0;
+		nodes [y, x] = GravityTransition.FREE;
+		while (y != h-1) {
+			for (int xd = start; xd != goal;) {
+				nodes [y, xd] = GravityTransition.FREE;
+				if (xd == yt) {
+					y++;
+					nodes [y, xd] = GravityTransition.FREE;
+				}
+				xd += start > goal ? -1 : 1;
+				if (xd == goal) {
+					nodes [y, xd] = GravityTransition.FREE;
+					break;				
+				}
+			}
+			start = goal;
+			goal = RowIndex ();
+			yt = start > goal ?  Random.Range(goal, start) : Random.Range(start, goal);
+			//Debug.Log (": " + start + ", " + goal + " - " + yt);
+		}
+
+		//GOAL ZONE
+		nodes [h-1, goal] = GravityTransition.GOAL;
+		nodes [h-2, goal] = GravityTransition.FREE;
+		if (goal - 1 >= 0) {
+			nodes [h - 1, goal - 1] = GravityTransition.FREE;
+			nodes [h - 2, goal - 1] = GravityTransition.FREE;
+		} else {
+			nodes [h-1, goal+1] = GravityTransition.FREE;
+			nodes [h-2, goal+1] = GravityTransition.FREE;
+		}
+	}
 
 }

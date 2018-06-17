@@ -8,14 +8,6 @@ public class GlobalVariableHandler : MonoBehaviour {
 	void Start () {
 		Text t = transform.Find("MomentumLabel").GetComponent<Text>();
 		t.text = "Momentum: " + GlobalVariables.GravityMomentum;
-
-		InputField w = transform.Find("MapW").GetComponent<InputField>();
-		w.text = ""+GlobalVariables.Map_Width;
-		InputField h = transform.Find("MapH").GetComponent<InputField>();
-		h.text = ""+GlobalVariables.Map_Height;
-
-		Toggle bht = transform.Find("BlackHoleToggle").GetComponent<Toggle>();
-		bht.isOn = GlobalVariables.Spawn_Black_Holes;
 	}
 	
 	// Update is called once per frame
@@ -26,6 +18,16 @@ public class GlobalVariableHandler : MonoBehaviour {
 	public void OnCheckBoxUpdateBHole(bool v) {
 		GlobalVariables.Spawn_Black_Holes = v;
 		Debug.Log ("spawn changed to " + v);
+	}
+
+	public void OnCheckBoxUpdateHelper(bool v) {
+		GlobalVariables.Show_Helper_Line = v;
+		Debug.Log ("Helper shown " + v);
+	}
+
+	public void OnCheckBoxOverviewCamera(bool v) {
+		GlobalVariables.Overview_Camera = v;
+		Debug.Log ("overview changed to " + v);
 	}
 
 	public void OnWidthVal(string v) {

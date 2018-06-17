@@ -14,6 +14,6 @@ public class CustomGravity : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 g = ( gravity_magnitude * -this.transform.up);
-		rb2d.AddForce ( g , ForceMode2D.Force );
+		rb2d.AddForce ( g , ForceMode2D.Impulse );
 	}
 }
