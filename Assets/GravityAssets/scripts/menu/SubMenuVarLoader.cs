@@ -22,18 +22,20 @@ public class SubMenuVarLoader : UIGlobalVarLoader {
 	}
 
 	private void FindUiComponents() {
-		w = transform.Find("MapW").GetComponent<InputField>();
-		h = transform.Find("MapH").GetComponent<InputField>();
-		bht = transform.Find("BlackHoleToggle").GetComponent<Toggle>();
+		w = transform.Find("Dev/MapW").GetComponent<InputField>();
+		h = transform.Find("Dev/MapH").GetComponent<InputField>();
+		bht = transform.Find("Dev/BlackHoleToggle").GetComponent<Toggle>();
+//		ovt = transform.Find("OverViewToggle").GetComponent<Toggle>();
 	}
 		
 	#region implemented abstract members of UIGlobalVarLoader
 	protected override void LoadVariables ()
 	{
-		w.text = ""+GlobalVariables.Map_Width;
-		h.text = ""+GlobalVariables.Map_Height;
+	//	w.text = ""+GlobalVariables.Map_Width;
+	//	h.text = ""+GlobalVariables.Map_Height;
 
 		bht.isOn = GlobalVariables.Spawn_Black_Holes;
+		ovt.isOn = GlobalVariables.Overview_Camera;
 	}
 	#endregion
 }

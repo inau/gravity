@@ -6,8 +6,8 @@ public class GlobalVariableHandler : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Text t = transform.Find("MomentumLabel").GetComponent<Text>();
-		t.text = "Momentum: " + GlobalVariables.GravityMomentum;
+//		Text t = transform.Find("MomentumLabel").GetComponent<Text>();
+//		t.text = "Momentum: " + GlobalVariables.GravityMomentum;
 	}
 	
 	// Update is called once per frame
@@ -30,6 +30,7 @@ public class GlobalVariableHandler : MonoBehaviour {
 		Debug.Log ("overview changed to " + v);
 	}
 
+	/**
 	public void OnWidthVal(string v) {
 		GlobalVariables.Map_Width = int.Parse(v);
 		Debug.Log ("Width to " + v);
@@ -39,4 +40,5 @@ public class GlobalVariableHandler : MonoBehaviour {
 		GlobalVariables.Map_Height = int.Parse(v);
 		Debug.Log ("Height changed to " + v);
 	}
+	**/
 }
