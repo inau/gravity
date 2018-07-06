@@ -63,6 +63,9 @@ public class Variables : MonoBehaviour {
 		GlobalVariables.variablesRx.player_screen_coordinates.SubscribeToText (MomentumLabel).AddTo(MomentumLabel);
 
 		GlobalVariables.preferencesRx.camera_overview.Subscribe(x => overviewToggle.isOn = x ).AddTo(overviewToggle);
+		overviewToggle.OnValueChangedAsObservable()
+		.Subscribe(_ => GlobalVariables.preferencesRx.camera_overview.Value = !GlobalVariables.preferencesRx.camera_overview.Value)
+		.AddTo(overviewToggle);
 
 		GlobalVariables.levelPrefsRx.width.SubscribeToText (widthInput.textComponent).AddTo (widthInput.textComponent);
 		GlobalVariables.levelPrefsRx.height.SubscribeToText (heightInput.textComponent).AddTo (heightInput.textComponent);

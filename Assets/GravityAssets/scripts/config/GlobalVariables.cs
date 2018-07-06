@@ -22,47 +22,8 @@ public class GlobalVariables {
 			spawn_black_holes = value;
 		}
 	}
-
-	public static bool Show_Helper_Line {
-		get { 
-			return helper_line;
-		}
-		set { 
-			helper_line = value;
-		}
-	}
-
-
-	public static bool Overview_Camera {
-		get { 
-			return overview_camera;
-		}
-		set { 
-			overview_camera = value;
-		}
-	}
-
-	public static float GravityMin {
-		get { 
-			return gravity_min;
-		}
-	}
-
-	public static float GravityMax {
-		get { 
-			return gravity_cap;
-		}
-	}
-
-	public static float GravityMomentum {
-		get { 
-			return gravity_momentum;
-		}
-		set { 
-			gravity_momentum = value;
-		}
-	}
 }
+
 namespace Global {
 	namespace Enumerations {
 
@@ -71,7 +32,6 @@ namespace Global {
 		}
 
 	}
-
 }
 
 namespace ViewModels {
@@ -97,11 +57,15 @@ namespace ViewModels {
 	public class GameVariables {
 		public ReactiveProperty<Global.Enumerations.GameMode> mode { get; private set;}
 		public ReactiveProperty<int> coins { get; private set; }
+		public ReactiveProperty<int> combo { get; private set; }
 		public ReactiveProperty<Vector3> player_screen_coordinates { get; private set;}
 
 		public GameVariables() {
 			mode = new ReactiveProperty<Global.Enumerations.GameMode> ( Global.Enumerations.GameMode.NOT_SET );
+			
 			coins = new ReactiveProperty<int> (0);
+			combo = new ReactiveProperty<int> (0);
+
 			player_screen_coordinates = new ReactiveProperty<Vector3> ( Vector3.zero );
 		}
 	}

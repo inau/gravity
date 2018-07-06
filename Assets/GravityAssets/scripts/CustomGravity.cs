@@ -2,12 +2,12 @@
 using System.Collections;
 
 public class CustomGravity : MonoBehaviour {
-	float gravity_magnitude = 0.5f;
+	float gravity_magnitude = 0.1f;
 	Rigidbody2D rb2d;
 	// Use this for initialization
 	void Start () {
 		rb2d = GetComponent<Rigidbody2D> ();
-		gravity_magnitude = GlobalVariables.GravityMomentum;
+//		gravity_magnitude = GlobalVariables.GravityMomentum;
 		Debug.Log ("Player Grav = " + gravity_magnitude);
 	}
 	

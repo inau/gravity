@@ -42,7 +42,8 @@ public class TriggerHandlerRx : MonoBehaviour {
 				evt.player.transform.localScale = sc_c;				
 			}
 
-			evt.player.attachedRigidbody.isKinematic = true;
+			evt.player.attachedRigidbody.velocity.Set(0f,0f);
+			evt.player.attachedRigidbody.bodyType = RigidbodyType2D.Static;
 			evt.player.transform.position =
 				Vector2.MoveTowards(
 					evt.player.transform.position,

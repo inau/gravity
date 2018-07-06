@@ -20,16 +20,6 @@ public class GlobalVariableHandler : MonoBehaviour {
 		Debug.Log ("spawn changed to " + v);
 	}
 
-	public void OnCheckBoxUpdateHelper(bool v) {
-		GlobalVariables.Show_Helper_Line = v;
-		Debug.Log ("Helper shown " + v);
-	}
-
-	public void OnCheckBoxOverviewCamera(bool v) {
-		GlobalVariables.Overview_Camera = v;
-		Debug.Log ("overview changed to " + v);
-	}
-
 	/**
 	public void OnWidthVal(string v) {
 		GlobalVariables.Map_Width = int.Parse(v);

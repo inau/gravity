@@ -28,10 +28,13 @@ public class PlayerActions : MonoBehaviour {
 	public void OnGameEventArgs(TriggerConditionRx.GameStateEventArgs args) {
 		switch (args.game_event_type) {
 		case TriggerConditionRx.GameStateEventType.MENU:
-			rb.isKinematic = true;
+			rb.bodyType = RigidbodyType2D.Kinematic;
 			break;
 		case TriggerConditionRx.GameStateEventType.START_GAME:
-			rb.isKinematic = false;
+			rb.bodyType = RigidbodyType2D.Dynamic;
+			break;
+		case TriggerConditionRx.GameStateEventType.END_GAME:
+			rb.bodyType = RigidbodyType2D.Kinematic;
 			break;
 		default:
 			break;
@@ -48,6 +51,8 @@ public class PlayerActions : MonoBehaviour {
 		this.transform.rotation = base_rot;
 		this.transform.position = defaultPos;
 		this.transform.localScale = nrm_sc;
+
+
 	}
 
 	public void setGravity(bool active) {

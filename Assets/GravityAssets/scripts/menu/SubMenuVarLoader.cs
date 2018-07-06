@@ -35,7 +35,7 @@ public class SubMenuVarLoader : UIGlobalVarLoader {
 	//	h.text = ""+GlobalVariables.Map_Height;
 
 		bht.isOn = GlobalVariables.Spawn_Black_Holes;
-		ovt.isOn = GlobalVariables.Overview_Camera;
+//		ovt.isOn = GlobalVariables.Overview_Camera;
 	}
 	#endregion
 }

@@ -48,7 +48,7 @@ public class MapLoader : MonoBehaviour {
 		GenerateBlock (gm.w, Y, gm, GravityLevels.MapGeneration.brick);
 	}
 
-	public void GenerateBlock(int col, int row, GravityLevels.GravityMap gm, GameObject block, int default_z = -1){
+	public void GenerateBlock(int col, int row, GravityLevels.GravityMap gm, GameObject block, int default_z = 0){
 		GameObject bb = Instantiate(block, new Vector3(col - (-.5f + ((float)gm.w / 2f)), -row, default_z), Quaternion.identity) as GameObject;
 		bb.transform.parent = MapParent.transform;
 	}

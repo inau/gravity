@@ -21,30 +21,24 @@ public class CameraBehaviour : MonoBehaviour {
 
 	public Transform player;
 
-	void UpdatePositionVectors() {
+	void UpdatePositionVectors(bool v) {
 		//update cam vectors
 		normal_pos = transform.position;
 		normal_pos.z = -normal_distance;
 
 		overview_pos = transform.position;
 		overview_pos.z = -overview_distance;
+
+		overview = v;
 	}
 
 	void Start() {
-		UpdatePositionVectors ();
+		GlobalVariables.preferencesRx.camera_overview.Subscribe(UpdatePositionVectors).AddTo(this);
 
 		this.transform.position = overview ? overview_pos : normal_pos;	
-
-
 	}
 
 	void Update() {
-		if (overview != GlobalVariables.Overview_Camera) {
-			UpdatePositionVectors ();
-			overview = GlobalVariables.Overview_Camera;
-			return;
-		}
-
 		if (overview)
 			TransformTo(overview_pos);
 		else
